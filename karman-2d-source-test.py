@@ -146,7 +146,7 @@ args = parser.parse_args()
 params.update(vars(args))
 domain = Domain(y=params['res'] * 2, x=params['res'], bounds=Box[0:params['len'] * 2, 0:params['len']], boundaries=OPEN)
 RefDataset = Dataset(domain, params['sim'], params['input'], params['initial_step'], params['steps'], True)
-print("Finish read data")
+print("Finish data reading")
 simulator = KarmanFlow(domain=domain)
 error = []
 

@@ -248,7 +248,7 @@ Net = Mynet()
 Net.load_state_dict(torch.load(params['model_path'],map_location=TORCH.get_default_device().ref)['model'])
 Net.to(TORCH.get_default_device().ref)
 TestDataset = Dataset(domain, params['sim'], params['input'], params['initial_step'], params['steps'], True)
-print("Finished read data")
+print("Finish data reading")
 error = []
 with torch.no_grad():
     for i in range(params['sim']):

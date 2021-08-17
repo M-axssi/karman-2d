@@ -259,7 +259,7 @@ if params['model_path'] is not None:
     Net.to(TORCH.get_default_device().ref)
 
 TestDataset = Dataset(domain, params['sim'], params['input'], params['initial_step'], params['steps'] + 1, True)
-print("Finished read data")
+print("Finish data reading")
 
 write_list = list(map(int, params['mark'].split(',')))
 with torch.no_grad():

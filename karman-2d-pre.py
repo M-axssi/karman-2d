@@ -1,5 +1,5 @@
 import phi.field
-import os, argparse, pickle, random
+import os, argparse, pickle, random, distutils.dir_util
 import scipy.sparse.linalg
 from phi.physics._boundaries import Domain, OPEN
 from phi.torch.flow import *
@@ -7,6 +7,16 @@ from phi.torch.flow import *
 random.seed(0)
 np.random.seed(0)
 
+from PIL import Image  # for writing PNGs
+
+
+def save_img(array, scale, name):
+    assert tuple.__len__(array.shape) == 2, 'cannot save as an image of {}'.format(array.shape)
+    ima = np.reshape(array, [array.shape[0], array.shape[1]])  # remove channel dimension, 2d
+    ima = ima[::-1, :]  # flip along y
+    image = Image.fromarray(np.asarray(ima * scale, dtype='i'))
+    print("\tWriting image: " + name)
+    image.save(name)
 
 class KarmanFlow():
     def __init__(self, domain):
@@ -309,3 +319,13 @@ for i in range(1, params['steps']):
         },
         frame=i
     )
+
+    thumb_path = os.path.normpath(scene.path).replace(os.path.basename(scene.path),
+                                                      "thumb/{}".format(os.path.basename(scene.path)))
+    distutils.dir_util.mkpath(thumb_path)
+    save_img(density_l.data.numpy(density_l.values.shape.names), 10000.,
+             thumb_path + "/dens_{:06d}.png".format(i))  # shape: [cy, cx]
+    save_img(velocity_l.vector['x'].data.numpy(velocity_l.vector['x'].values.shape.names), 40000.,
+             thumb_path + "/velU_{:06d}.png".format(i))  # shape: [cy, cx+1]
+    save_img(velocity_l.vector['y'].data.numpy(velocity_l.vector['y'].values.shape.names), 40000.,
+             thumb_path + "/velV_{:06d}.png".format(i))  # shape: [cy+1, cx]

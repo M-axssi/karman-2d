@@ -1,4 +1,4 @@
-SHELL:=/bin/bash
+	SHELL:=/bin/bash
 
 #---------------------------------------------------------
 #ref-data
@@ -11,7 +11,7 @@ Ref_Data:karman-2d.py
 #test-data
 Test_Data:karman-2d.py
 	for i in `seq 0 5`; do \
-		python $^ -o Test-Data -r 128 -l 100 --re `echo $$(( 10000 * 2**($$i+3)*3 ))`; \
+		python $^ -o Test-Data-temp -r 128 -l 100 --re `echo $$(( 10000 * 2**($$i+3)*3 ))`; \
 	done
 
 
@@ -19,7 +19,7 @@ Test_Data:karman-2d.py
 #pre-data
 Pre_Data:karman-2d-pre.py
 	for i in `seq 0 5`; do \
-		python $^ -o Pre-Data -r 32 --beta 0 --scale 4 -l 100 --re `echo $$(( 10000 * 2**($$i+4) ))`; \
+		python $^ -o Pre-Data-temp -r 32 --beta 0 --scale 4 -l 100 --re `echo $$(( 10000 * 2**($$i+4) ))`; \
 	done
 
 #---------------------------------------------------------

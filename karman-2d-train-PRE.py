@@ -211,7 +211,7 @@ optimizer = optim.Adam(Net.parameters(), lr=cur_lr)
 if params['model_path'] is not None: optimizer.load_state_dict(checkpoint['optimizer'])
 
 MyDataset = PRE_Dataset(domain, params['sim'], params['input'], params['initial_step'], params['steps'])
-print("Finish read data")
+print("Finish data reading")
 
 if not os.path.exists(os.path.dirname(params['output'])):
     os.mkdir(os.path.dirname(params['output']))

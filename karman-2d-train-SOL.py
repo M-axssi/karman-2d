@@ -322,7 +322,7 @@ if params['model_path'] is not None: optimizer.load_state_dict(checkpoint['optim
 
 RefDataset = SOL_Dataset(domain, num_sim, params['input'], params['initial_step'],
                          params['steps'], params['batch_size'], True)
-print("Finish read data")
+print("Finish data reading")
 
 if not os.path.exists(os.path.dirname(params['output'])):
     os.mkdir(os.path.dirname(params['output']))
