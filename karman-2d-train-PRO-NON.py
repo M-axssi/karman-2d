@@ -390,7 +390,7 @@ for i in range(params['epoch']):
                 total_loss += loss
                 RefDataset.next_step()
                 if count != 0 and count % 30 == 29:
-                    print(f"The mean loss of count{count - 29}-count{count} for epoch{i},batch{j} is {total_loss / 30}")
+                    print(f"The mean loss of count{count - 29}-count{count} for epoch{i},batch{j},step{k} is {total_loss / 30}")
                     total_loss = 0
             pre_V = temp_V
 
