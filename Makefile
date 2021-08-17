@@ -54,15 +54,16 @@ SOL:karman-2d-train-SOL.py
 #---------------------------------------------------------
 #Test source data
 Source_Test:karman-2d-source-test.py
-	python $^ -r 32 -l 100 -s 5 --initial_step 1000 --input=./Test-Data
+	python $^ -r 32 -l 100 -s 5 --initial_step 1000 --steps 500 --input=./Test-Data
 
 #---------------------------------------------------------
 #Allpy
 Apply:karman-2d-apply.py
-	python $^ -r 32 -l 100 -s 5 --device CPU --initial_step 1000 --input=./Test-Data --model_path=./model/PRO_NON_8_36.pth
+	python $^ -r 32 -l 100 -s 5 --device CPU --initial_step 1000 --steps 500 --input=./Test-Data \
+	--model_path=./model/PRO_NON_8_36.pth
 
 #---------------------------------------------------------
-#Generate imga
-Generate_Imag:karman-2d-show.py
+#Generate imgaes
+Generate_Image:karman-2d-show.py
 	python $^ -r 32 -l 100 -s 5 --device CPU --initial_step 1000  --steps 200 --input=./Test-Data \
 	--model_path=./model/NON.pth --output ./imag_result/SRC  --type Source --mark 4
