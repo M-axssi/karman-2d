@@ -26,7 +26,7 @@ Pre_Data:karman-2d-pre.py
 #pre-data for pre_sr
 Pre_Data_Sr:karman-2d-pre.py
 	for i in `seq 0 5`; do \
-		python $^ -o Pre-Data_Sr -r 32 --beta 1 --scale 4 -l 100 --re `echo $$(( 10000 * 2**($$i+4) ))`; \
+		python $^ -o Pre-Data-Sr -r 32 --beta 1 --scale 4 -l 100 --re `echo $$(( 10000 * 2**($$i+4) ))`; \
 	done
 
 #---------------------------------------------------------
