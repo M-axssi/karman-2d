@@ -35,6 +35,6 @@ make Apply       #计算矫正迭代的误差(通过设定model_path可以指定
 
 **生成图像结果**
 ```
-make Generate_Imag  #生成密度速度的热力图
+make Generate_Imags  #生成密度速度的热力图
 ```
 设置type可以指定使用的模型类型，可以选择的有Ref(生成参考结果)、Source(生成无矫正迭代结果)和Model(生成矫正迭代结果)。其中若type为Model则还需要设置model_path来指定希望使用模型的地址。
