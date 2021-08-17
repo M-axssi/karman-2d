@@ -65,4 +65,4 @@ Apply:karman-2d-apply.py
 #Generate imga
 Generate_Imag:karman-2d-show.py
 	python $^ -r 32 -l 100 -s 5 --device CPU --initial_step 1000  --steps 200 --input=./Test-Data \
-	--model_path=./model/NON.pth --output ./imag_result/SRC --type Source --mark 4
+	--model_path=./model/NON.pth --output ./imag_result/SRC  --type Source --mark 4
